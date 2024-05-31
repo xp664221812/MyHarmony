@@ -1,3 +1,5 @@
+import promptAction from '@ohos.promptAction'
+
 @Entry
 @Component
 struct AnswerDetailPage {
@@ -6,6 +8,9 @@ struct AnswerDetailPage {
   @State answerContentBean: AnswerContentBean = new AnswerContentBean(1717038728914, '杭州', 30
     , '我们来猜想一下原因，Image的父布局Flex其实是一个宽高都不确定的组件，设计初衷，宽度是根据屏幕尺寸扣除了一个固定宽高的（这里设置的是50）Flex剩余的部分，用layoutWeight设定，而高度是图片自行撑开。', false, '我是谁')
   @State myComment: string = ''
+  scroller: Scroller = new Scroller()
+
+  // @State scroller: Scroller = new Scroller()
 
   @Builder
   itemHead() {
@@ -58,70 +63,28 @@ struct AnswerDetailPage {
 
   }
 
-  @Builder
-  itemBody(commentContentBean: CommentContentBean) {
-
-    Row() {
-      Image(commentContentBean.avatar).width(30).margin({ left: 15, top: 15 })
-
-      Column() {
-        Text(commentContentBean.name).width('100%').fontWeight(600).fontColor('#B3000000')
-
-        Text(commentContentBean.commentContent).margin({ top: 12 })
-
-        Row() {
-          Row() {
-            Text('5-15').fontColor('#B3000000').opacity(0.5).fontSize(13)
-            Text('ip属地').fontColor('#B3000000').opacity(0.5).fontSize(13).margin({ left: 5 })
-            Text(commentContentBean.ipAddress)
-              .fontColor('#B3000000')
-              .opacity(0.5)
-              .fontSize(13)
-              .margin({ left: 2 })
-          }
-
-          Row() {
-            if (commentContentBean.isLike) {
-              Image($r('app.media.ic_like')).width(18).onClick(() => {
-                console.log('1111111111111111111111')
-                commentContentBean.isLike = false
-                commentContentBean.likeCount--
-              })
-            } else {
-              Image($r('app.media.ic_not_like')).width(18).onClick(() => {
-                console.log('222222222222222222222222')
-                commentContentBean.isLike = true
-                commentContentBean.likeCount++
-              })
-            }
-            Text(commentContentBean.likeCount + "").fontSize(13).margin({ left: 5 })
-          }
-        }.width('100%').justifyContent(FlexAlign.SpaceBetween).margin({ top: 7 })
-
-      }
-      .padding({ left: 10, top: 15, right: 10 })
-      .justifyContent(FlexAlign.Start)
-      .layoutWeight(1)
-      .alignItems(HorizontalAlign.Start)
-    }.width('100%').alignItems(VerticalAlign.Top).padding({ bottom: 15 })
+  update() {
+    this.scroller.scrollToIndex(this.commentList.length)
   }
 
   build() {
     Column() {
       ToolBar()
-      List() {
+      List({ scroller: this.scroller }) {
         ListItemGroup({ header: this.itemHead() }) {
         }
 
         ForEach(this.commentList, (item) => {
           ListItem() {
-            this.itemBody(item)
-            // CommentItem({commentContentBean:item})
+            // this.itemBody(item)
+            CommentItem({ commentContentBean: <CommentContentBean> item })
           }
         })
       }.layoutWeight(1)
 
-      Footer({ myComment: $myComment })
+      Footer({ myComment: $myComment, commentList: this.commentList, updateScroller: () => {
+        this.update()
+      } })
     }.backgroundColor(Color.White)
     .width('100%')
     .height('100%')
@@ -181,6 +144,11 @@ struct ToolBar {
 struct Footer {
   @Link
   myComment: string
+  @Link
+  commentList: CommentContentBean[]
+  count: number = 0
+  updateScroller: () => void = () => {
+  }
 
   build() {
     Column() {
@@ -199,7 +167,21 @@ struct Footer {
             this.myComment = value
           })
 
-        Text('发布').fontColor(Color.Blue).textAlign(TextAlign.Center).margin({ top: 10, left: 10 })
+        Text('发布').fontColor(Color.Blue).textAlign(TextAlign.Center).margin({ top: 10, left: 10 }).onClick(() => {
+          console.info('发布被点击了' + (++this.count))
+          // promptAction.showToast({message:'内容不能为空'})
+          if (!this.myComment) {
+            promptAction.showToast({ message: '内容不能为空' })
+          } else {
+            let commentContentBean = new CommentContentBean(1717038728914 + 678, '北京', 8
+              , this.myComment, false, 'xp')
+
+            this.commentList.push(commentContentBean)
+
+            this.myComment = ''
+            this.updateScroller()
+          }
+        })
 
       }.alignItems(VerticalAlign.Center)
 

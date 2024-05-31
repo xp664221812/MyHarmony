@@ -3,6 +3,10 @@
     "pages/Index",
     "pages/Users",
     "pages/ContactsPage",
-    "pages/AnswerDetailPage"
+    "pages/AnswerDetailPage",
+    "pages/StatePage",
+    "pages/PropPage",
+    "pages/LinkPage",
+    "pages/ObservedPage"
   ]
 }
