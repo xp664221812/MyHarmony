@@ -11,6 +11,14 @@
     {
       "name": "EntryAbility_label",
       "value": "label"
+    },
+    {
+      "name": "PlayService_desc",
+      "value": "description"
+    },
+    {
+      "name": "PlayService_label",
+      "value": "label"
     }
   ]
 }
