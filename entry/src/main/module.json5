@@ -31,15 +31,6 @@
             ]
           }
         ]
-      },
-      {
-        "name": "PlayService",
-        "srcEntry": "./ets/playservice/PlayService.ts",
-        "description": "$string:PlayService_desc",
-        "icon": "$media:icon",
-        "label": "$string:PlayService_label",
-        "startWindowIcon": "$media:startIcon",
-        "startWindowBackground": "$color:start_window_background"
       }
     ],
     "requestPermissions": [

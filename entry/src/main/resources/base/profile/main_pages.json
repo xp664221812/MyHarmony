@@ -8,6 +8,8 @@
     "pages/PropPage",
     "pages/LinkPage",
     "pages/ObservedPage",
-    "pages/TestPromisePage"
+    "pages/TestPromisePage",
+    "pages/DialogPage",
+    "pages/PhotoPickerPage"
   ]
 }
