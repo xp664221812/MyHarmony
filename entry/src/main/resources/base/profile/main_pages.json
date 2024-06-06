@@ -10,6 +10,7 @@
     "pages/ObservedPage",
     "pages/TestPromisePage",
     "pages/DialogPage",
-    "pages/PhotoPickerPage"
+    "pages/PhotoPickerPage",
+    "pages/FilePathPage"
   ]
 }

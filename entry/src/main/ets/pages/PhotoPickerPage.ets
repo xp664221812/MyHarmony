@@ -7,6 +7,7 @@ import util from '@ohos.util';
 struct PhotoPickerPage {
   @State message: string = 'Hello World'
   @State path: string = ''
+
   build() {
     Row() {
       Column({ space: 20 }) {
@@ -23,6 +24,7 @@ struct PhotoPickerPage {
     }
     .height('100%')
   }
+
   selectFile() {
     const photoSelectOptions = new picker.PhotoSelectOptions();
     photoSelectOptions.MIMEType = picker.PhotoViewMIMETypes.IMAGE_TYPE; // 过滤选择媒体文件类型为IMAGE
@@ -31,12 +33,12 @@ struct PhotoPickerPage {
     const photoViewPicker = new picker.PhotoViewPicker();
     photoViewPicker.select(photoSelectOptions).then((photoSelectResult) => {
       URI = photoSelectResult.photoUris[0];
-      const fileName = util.generateRandomUUID() + '.jpg'
+     /* const fileName = util.generateRandomUUID() + '.jpg'
       const file = fs.openSync(URI, fs.OpenMode.READ_ONLY)
       const fileUri = getContext().cacheDir + '/' + fileName
       fs.copyFileSync(file.fd, fileUri)
-      console.log(`path is ${fileUri}`)
-      this.path = fileUri
+      console.log(`path is ${fileUri}`)*/
+      this.path = URI
 
       console.info('photoViewPicker.select to file succeed and URI is:' + URI);
     }).catch((err) => {

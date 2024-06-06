@@ -7,6 +7,17 @@
     {
       "name": "user_name",
       "value": "xupan"
+    },
+
+
+    {
+      "name": "bundle_dir_name",
+      "value": "应用安装后的app的hap资源包所在目录；随应用卸载而清理:"
+    },
+
+    {
+      "name": "base_dir_name",
+      "value": "应用安装后的app的hap资源包所在目录；随应用卸载而清理:"
     }
   ]
 }
