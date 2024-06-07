@@ -11,6 +11,8 @@
     "pages/TestPromisePage",
     "pages/DialogPage",
     "pages/PhotoPickerPage",
-    "pages/FilePathPage"
+    "pages/FilePathPage",
+    "pages/LocalStoragePropPage",
+    "pages/StorageLinkPage"
   ]
 }
