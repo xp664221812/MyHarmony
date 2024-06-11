@@ -1,7 +1,7 @@
 // 创建新实例并使用给定对象初始化
-let storage = new LocalStorage({ 'PropA': 47 });
+let storage3 = new LocalStorage({ 'PropA': 47 });
 // 使LocalStorage可从@Component组件访问
-@Entry(storage)
+@Entry(storage3)
 @Component
 struct CompA {
   // @LocalStorageProp变量装饰器与LocalStorage中的'PropA'属性建立单向绑定
@@ -13,7 +13,7 @@ struct CompA {
       Button(`Parent from LocalStorage ${this.storProp1}`)
         .onClick(() => {
           console.log('1111111111111111111')
-          storage.set('PropA',56)
+          storage3.set('PropA',56)
         })
       ChildCom()
     }
