@@ -16,6 +16,25 @@ struct FilePathPage {
     .height('100%')
   }
 
+  onPageShow() {
+    console.log('testTag FilePathPage onPageShow------------------------')
+  }
+
+  onPageHide() {
+    console.log('testTag FilePathPage onPageHide------------------------')
+
+  }
+
+  aboutToAppear() {
+    console.log('testTag FilePathPage aboutToAppear------------------------')
+
+  }
+
+  aboutToDisappear() {
+    console.log('testTag FilePathPage aboutToDisappear------------------------')
+
+  }
+
   getPath() {
     //应用安装后的app的hap资源包所在目录；随应用卸载而清理。
     let bundleCodeDir = getContext().bundleCodeDir;

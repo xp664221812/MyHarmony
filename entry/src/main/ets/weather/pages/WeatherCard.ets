@@ -80,10 +80,10 @@ struct WeatherCard {
     })
   }
 
-  @Builder
-  test() {
-
+  onPageShow(){
+    console.log('6666666666666666666666666666')
   }
+
 
   aboutToAppear() {
     postCardAction(this, {

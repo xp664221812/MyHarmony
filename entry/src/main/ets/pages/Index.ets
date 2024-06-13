@@ -100,7 +100,7 @@ struct Index {
           console.log(`gender is ${this.gender == 1 ? '男' : '女'}`)
           console.log(`address is ${this.address}`)
           router.pushUrl({
-            url: "pages/Users",
+            url: "pages/FilePathPage",
             params: {
               name: '我是来自页面Index的数据',
               count: 100
@@ -116,8 +116,23 @@ struct Index {
   }
 
 
-  onPageShow(){
-    console.log('1111111111111111111')
+  onPageShow() {
+    console.log('testTag Index onPageShow------------------------')
+  }
+
+  onPageHide() {
+    console.log('testTag Index onPageHide------------------------')
+
+  }
+
+  aboutToAppear() {
+    console.log('testTag Index aboutToAppear------------------------')
+
+  }
+
+  aboutToDisappear() {
+    console.log('testTag Index aboutToDisappear------------------------')
+
   }
 
 }
