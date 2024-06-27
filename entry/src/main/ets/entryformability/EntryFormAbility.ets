@@ -5,6 +5,7 @@ import Want from '@ohos.app.ability.Want';
 import formProvider from '@ohos.app.form.formProvider';
 import axios from '@ohos/axios'
 import { WeatherResp } from '../bean/WeatherResp';
+import {Request} from '../tools/Request'
 
 
 export default class EntryFormAbility extends FormExtensionAbility {
@@ -58,6 +59,9 @@ export default class EntryFormAbility extends FormExtensionAbility {
 
   async syncNowWeather(formId: string) {
     console.log('qqqqqqqqqqqqqqqqqqqqqqqqqqqq')
+
+
+
 
     let response = await axios({
       method: 'get',

@@ -13,6 +13,7 @@
     "pages/PhotoPickerPage",
     "pages/FilePathPage",
     "pages/LocalStoragePropPage",
-    "pages/StorageLinkPage"
+    "pages/StorageLinkPage",
+    "pages/TestLinkPage"
   ]
 }
